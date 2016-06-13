@@ -1,0 +1,33 @@
+<form>
+  <div class="form-row">
+    <label for="username">Username</label>
+    <input [(ngModel)]="model.username"
+           ngControl="username"
+           type="text"
+           placeholder="Username"
+           required
+           #username="ngForm">
+    <div [hidden]="username.valid || username.pristine"
+          class="input-error">
+      Username is required
+    </div>
+  </div>
+  <div class="form-row">
+    <label for="password">Password</label>
+    <input [(ngModel)]="model.password"
+           ngControl="password"
+           type="password"
+           placeholder="Password"
+           required
+           #password="ngForm"
+           pattern=".{6,10}">
+     <div [hidden]="password.valid || password.pristine"
+           class="input-error">
+       Password must be between 6 and 10 characters
+     </div>
+  </div>
+  <div class="form-row last">
+    <div class="button submit centered" (click)="onClick($event)">Submit</div>
+  </div>
+  Remove when ready: {{model | json}}
+</form>

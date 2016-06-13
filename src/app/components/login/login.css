@@ -1,0 +1,16 @@
+.wrapper {
+  padding: 0.5em;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+}
+.section-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 1em;
+}

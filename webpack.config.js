@@ -22,8 +22,10 @@ var webpackConfig = {
     loaders: [
       // .ts files for TypeScript
       { test: /\.ts$/, loader: 'awesome-typescript-loader' },
-
     ]
+  },
+  devServer: {
+   stats: 'errors-only',
   }
 
 };
@@ -51,7 +53,12 @@ var defaultConfig = {
           path.join(__dirname, 'node_modules', '@angular2-material'),
           path.join(__dirname, 'node_modules', '@angular'),
         ]
-      }
+      },
+      {
+        loader: 'tslint-loader',
+        test: /\.tsx?$/,
+        exclude: path.join(__dirname, 'node_modules'),
+      },
     ],
     noParse: [
       path.join(__dirname, 'node_modules', 'zone.js', 'dist'),
@@ -87,6 +94,7 @@ var defaultConfig = {
     clearImmediate: 0,
     setImmediate: 0
   },
+
 }
 
 var webpackMerge = require('webpack-merge');

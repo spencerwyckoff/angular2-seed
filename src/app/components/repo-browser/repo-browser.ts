@@ -6,12 +6,12 @@ import {RepoDetail} from '../repo-detail/repo-detail';
 import {Github} from '../../services/github';
 
 @Component({
-  selector: 'repo-browser',
-  templateUrl: 'app/components/repo-browser/repo-browser.html',
-  styleUrls: ['app/components/repo-browser/repo-browser.css'],
-  providers: [ Github ],
   directives: [ ROUTER_DIRECTIVES ],
-  pipes: []
+  pipes: [],
+  providers: [ Github ],
+  selector: 'repo-browser',
+  styleUrls: ['app/components/repo-browser/repo-browser.css'],
+  templateUrl: 'app/components/repo-browser/repo-browser.html',
 })
 @Routes([
   { path: '/:org',       component: RepoList,  },
