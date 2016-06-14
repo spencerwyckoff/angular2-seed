@@ -6,10 +6,10 @@
 
 /* Imports for loading & configuring the in-memory web api */
 import {provide} from '@angular/core';
-import {XHRBackend} from '@angular/http';
+// import {XHRBackend} from '@angular/http';
 
-import {InMemoryBackendService, SEED_DATA} from 'angular2-in-memory-web-api';
-import {UserData} from './app/services/user-data';
+// import {InMemoryBackendService, SEED_DATA} from 'angular2-in-memory-web-api';
+// import {UserData} from './app/services/user-data';
 
 /* The usual bootstrapping imports */
 import {bootstrap} from '@angular/platform-browser-dynamic';
@@ -27,7 +27,7 @@ bootstrap(SeedAppComponent, [
   HTTP_PROVIDERS,
   ROUTER_PROVIDERS,
   provide(LocationStrategy, {useClass: HashLocationStrategy}),
-  provide(XHRBackend, {useClass: InMemoryBackendService}),
-  provide(SEED_DATA, {useClass: UserData}),
+  // provide(XHRBackend, {useClass: InMemoryBackendService}),
+  // provide(SEED_DATA, {useClass: UserData}),
 ])
 .catch((err: any) => console.error(err));

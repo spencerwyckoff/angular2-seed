@@ -4,29 +4,29 @@
  * UserData Service
  */
 
-export class UserData {
+export class UserService {
   public createDb(): any {
     const users: any[] = [
       {
         id: '1',
         name: 'Windstorm',
-        password: '',
-        username: '',
+        password: 'windst0rm',
+        username: 'windstorm',
       }, {
         id: '2',
         name: 'Bombasto',
-        password: '',
-        username: '',
+        password: 'b0mbast0',
+        username: 'bombasto',
       }, {
         id: '3',
         name: 'Magneta',
-        password: '',
-        username: '',
+        password: 'm@gent@',
+        username: 'magneta',
       }, {
         id: '4',
         name: 'Tornado',
-        password: '',
-        username: '',
+        password: 't0rnad0',
+        username: 'tornado',
       },
     ];
 
