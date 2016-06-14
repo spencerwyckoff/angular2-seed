@@ -1,12 +1,14 @@
-/*tslint:disable: object-literal-sort-keys no-stateless-class no-console typedef member-access no-missing-visibility-modifiers no-empty */
+/*tslint:disable: member-access no-empty */
 
 /**
  * @class LoginFormComponent
  */
 
+/* Directives */
 import {Component} from '@angular/core';
-import {NgForm} from '@angular/common';
-
+/* Services */
+import {LoggerService} from '../../logger';
+/* Models */
 import {User} from '../../models/user';
 
 @Component({
@@ -18,13 +20,25 @@ import {User} from '../../models/user';
   templateUrl: 'app/components/login/login-form.html',
 })
 export class LoginFormComponent {
-  public model = new User('spencerwyckoff', 'password');
-  submitted = false;
-  onClick(event, model) {
-    console.log(event);
-    console.log(this.model);
+  // this active state is a workaround for resetting a form
+  // it might be removed later on when a better reset feature is released
+  public active: boolean    = true;
+  public submitted: boolean = false;
+  public model: User        = new User('spencerwyckoff', 'password');
+  private logger: LoggerService;
+
+  constructor(logger: LoggerService) {
+    this.logger = logger;
+  }
+
+  public onSubmit(): void {
+    this.logger.log(this.model);
     this.submitted = true;
   }
-  // todo: Removed this when we're done
-  get diagnostic() {return JSON.stringify(this.model); }
+
+  public addNewUser(): void {
+    this.model = new User('', '');
+    this.active = false;
+    setTimeout(() => this.active = true, 0);
+  }
 }

@@ -12,11 +12,12 @@ import {HeaderComponent} from './components/header/header';
 import {FooterComponent} from './components/footer/footer';
 import {About} from './components/about/about';
 import {RepoBrowser} from './components/repo-browser/repo-browser';
+import {LoggerService} from './logger';
 
 @Component({
   directives: [ROUTER_DIRECTIVES, HeaderComponent, FooterComponent],
   pipes: [],
-  providers: [],
+  providers: [LoggerService],
   selector: 'ps-app',
   styleUrls: ['app/seed-app.css'],
   templateUrl: 'app/seed-app.html',

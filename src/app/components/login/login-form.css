@@ -8,19 +8,23 @@ form {
   margin-bottom: 0.25em;
   padding: 0.5em 0;
 }
-.form-row input,
+.form-row.last {
+  display: flex;
+  flex-flow: row nowrap;
+}
+.form-row input[type="text"],
+.form-row input[type="password"],
 .form-row select {
   box-sizing: border-box;
   font-size: 16px;
   padding: 0.25em 0.5em;
-  width: 100%;
   -webkit-box-shadow: none;
 	-moz-box-shadow: none;
   background-image:none;
-  background-color:transparent;
   -webkit-box-shadow: none;
   -moz-box-shadow: none;
   box-shadow: none;
+  width: 100%;
 }
 .button {
   box-sizing: border-box;
@@ -28,13 +32,32 @@ form {
   padding: 0.5em 1em;
   font-size: 16px;
   cursor: pointer;
+  background: none;
+  border: none;
+  min-width: 75px;
+  text-align: center;
+}
+.button.submit[disabled],
+.button.submit[disabled]:hover {
+  background: lightgrey;
+  color: gray;
+  cursor: none;
+  font-style: italic;
 }
 .button.submit {
-  background: lightgreen;
+  background-color: lightgreen;
   color: black;
 }
 .button.submit:hover {
-  background: green;
+  background-color: green;
+  color: white;
+}
+.button.add {
+  background-color: pink;
+  color: black;
+}
+.button.add:hover {
+  background-color: #ff66cc;
   color: white;
 }
 .centered {

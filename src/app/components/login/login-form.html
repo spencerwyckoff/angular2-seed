@@ -1,33 +1,60 @@
-<form>
-  <div class="form-row">
-    <label for="username">Username</label>
-    <input [(ngModel)]="model.username"
-           ngControl="username"
-           type="text"
-           placeholder="Username"
-           required
-           #username="ngForm">
-    <div [hidden]="username.valid || username.pristine"
-          class="input-error">
-      Username is required
+<div *ngIf="!submitted">
+  <form *ngIf="active"
+        (ngSubmit)="onSubmit()"
+        #userForm="ngForm">
+    <div class="form-row">
+      <label for="username">Username</label>
+      <input [(ngModel)]="model.username"
+             ngControl="username"
+             type="text"
+             placeholder="Username"
+             required
+             #username="ngForm">
+      <div [hidden]="username.valid || username.pristine"
+            class="input-error">
+        Username is required
+      </div>
     </div>
+    <div class="form-row">
+      <label for="password">Password</label>
+      <input [(ngModel)]="model.password"
+             ngControl="password"
+             type="password"
+             placeholder="Password"
+             required
+             #password="ngForm"
+             pattern=".{6,10}">
+       <div [hidden]="password.valid || password.pristine"
+             class="input-error">
+         Password must be between 6 and 10 characters
+       </div>
+    </div>
+    <div class="form-row last">
+      <input type="button"
+             class="button add centered"
+             (click)="addNewUser()"
+             value="Add New User" />
+      <input type="submit"
+             class="button submit centered"
+             [disabled]="!userForm.form.valid"
+             value="Submit" />
+    </div>
+    Remove when ready: {{model | json}}
+  </form>
+</div>
+<div *ngIf="submitted">
+  <h2>You submitted the following:</h2>
+  <div class="form-row">
+    <div>Name</div>
+    <div>{{ model.username }}</div>
   </div>
   <div class="form-row">
-    <label for="password">Password</label>
-    <input [(ngModel)]="model.password"
-           ngControl="password"
-           type="password"
-           placeholder="Password"
-           required
-           #password="ngForm"
-           pattern=".{6,10}">
-     <div [hidden]="password.valid || password.pristine"
-           class="input-error">
-       Password must be between 6 and 10 characters
-     </div>
+    <div>Password</div>
+    <div>{{ model.password }}</div>
   </div>
-  <div class="form-row last">
-    <div class="button submit centered" (click)="onClick($event)">Submit</div>
-  </div>
-  Remove when ready: {{model | json}}
-</form>
+  <br>
+  <input type="button"
+  class="button add centered"
+  (click)="submitted=false"
+  value="Edit" />
+</div>

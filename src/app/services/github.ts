@@ -1,29 +1,38 @@
+/*tslint:disable: no-backbone-get-set-outside-model */
+
+/**
+ * UserData Service
+ */
+
 import {Injectable} from '@angular/core';
 import {Http, URLSearchParams} from '@angular/http';
 import 'rxjs/add/operator/map';
 
 @Injectable()
 export class Github {
-  constructor(private http: Http) {}
+  public http: Http;
+  constructor(http: Http) {
+    this.http = http;
+  }
 
-  getOrg(org: string) {
+  public getOrg(org: string) {
     return this.makeRequest(`orgs/${org}`);
   }
 
-  getReposForOrg(org: string) {
+  public getReposForOrg(org: string) {
     return this.makeRequest(`orgs/${org}/repos`);
   }
 
-  getRepoForOrg(org: string, repo: string) {
+  public getRepoForOrg(org: string, repo: string) {
     return this.makeRequest(`repos/${org}/${repo}`);
   }
 
-  private makeRequest(path: string) {
-    let params = new URLSearchParams();
+  private makeRequest(path: string): any {
+    const params: any = new URLSearchParams();
     params.set('per_page', '100');
 
-    let url = `https://api.github.com/${ path }`;
+    const url: string = `https://api.github.com/${ path }`;
     return this.http.get(url, {search: params})
-      .map((res) => res.json());
+      .map((res: any) => res.json());
   }
 }
